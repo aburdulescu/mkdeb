@@ -4,3 +4,7 @@ all:
 clean:
 	go clean
 	rm -rf mkdeb.out *.deb
+
+deb: all
+	./mkdeb
+	dpkg-deb -b mkdeb.out
