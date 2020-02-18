@@ -1,5 +1,11 @@
 ## mkdeb
-deb format metadata generator
+deb format metadata generator.
+
+It generates a folder which can be used by `dpkg-deb` to generate a `deb` package.
+
+Example:
+- generate metadata dir: `mkdeb my_awesome_package-3.4.5`
+- generate deb package from metadata dir: `dpkg-deb -b my_awesome_package-3.4.5"
 
 ### Build & Install
 #### From prebuilt deb package
