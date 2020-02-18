@@ -1,8 +1,7 @@
-$(info $(MKDEB_VERSION))
 ifeq ($(MKDEB_VERSION),)
-	DEB_DIR = mkdeb-dev
+	DEB_DIR = mkdeb_dev
 else
-	DEB_DIR = mkdeb-$(MKDEB_VERSION)
+	DEB_DIR = mkdeb_$(MKDEB_VERSION)-0_$(shell dpkg --print-architecture)
 endif
 
 DEB_NAME = $(DEB_DIR).deb
