@@ -1,7 +1,7 @@
 {
     "control": {
         "package": "mkdeb",
-        "version": "1.0-0",
+        "version": "0.1-0",
         "architecture": "amd64",
         "maintainer": "Andrei Burdulescu <andrei.burdulescu@pm.me>",
         "description": "cli tool for generating deb package metadata"
