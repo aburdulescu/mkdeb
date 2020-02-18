@@ -7,7 +7,7 @@ endif
 DEB_NAME = $(DEB_DIR).deb
 
 all:
-	go build -ldflags "-s -w"
+	go build -ldflags "-s -w -X main.version="$(MKDEB_VERSION)
 
 clean:
 	go clean

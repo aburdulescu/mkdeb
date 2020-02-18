@@ -8,6 +8,8 @@ import (
 	"os"
 )
 
+var version string
+
 func handleError(err error) {
 	fmt.Fprintln(os.Stderr, "error:", err)
 	os.Exit(1)
@@ -16,7 +18,13 @@ func handleError(err error) {
 func main() {
 	var metadataFile string
 	flag.StringVar(&metadataFile, "f", "mkdeb.json", "path to mkdeb.json file")
+	var printVersion bool
+	flag.BoolVar(&printVersion, "v", false, "print version")
 	flag.Parse()
+	if printVersion {
+		fmt.Println(version)
+		return
+	}
 	args := flag.Args()
 	if len(args) != 1 {
 		handleError(errors.New("path to output directory wasn't provided"))
