@@ -12,6 +12,9 @@ func makeOutDir(outputDir string, p Package) error {
 	if err := mkArtifacts(outputDir, p.Artifacts); err != nil {
 		return err
 	}
+	if err := mkScripts(outputDir, p.Scripts); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -53,6 +56,26 @@ func mkArtifacts(outDirPath string, a map[string]string) error {
 				return err
 			}
 		}
+	}
+	return nil
+}
+
+func mkScripts(outDirPath string, s map[string]string) error {
+	debianDirPath := filepath.Join(outDirPath, "DEBIAN")
+	for name, content := range s {
+		path := filepath.Join(debianDirPath, name)
+		f, err := os.Create(path)
+		if err != nil {
+			return err
+		}
+		_, err = f.WriteString("#!/bin/bash\n" + content + "\n")
+		if err != nil {
+			return err
+		}
+		if err := f.Chmod(0755); err != nil {
+			return err
+		}
+		f.Close()
 	}
 	return nil
 }
