@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"os"
@@ -14,10 +15,13 @@ func handleError(err error) {
 
 func main() {
 	var metadataFile string
-	var outputDir string
-	flag.StringVar(&metadataFile, "f", "mkdeb.json", "path to metadata file")
-	flag.StringVar(&outputDir, "o", "mkdeb.out", "path to output directory")
+	flag.StringVar(&metadataFile, "f", "mkdeb.json", "path to mkdeb.json file")
 	flag.Parse()
+	args := flag.Args()
+	if len(args) != 1 {
+		handleError(errors.New("path to output directory wasn't provided"))
+	}
+	outputDir := args[0]
 	f, err := os.Open(metadataFile)
 	if err != nil {
 		handleError(err)
