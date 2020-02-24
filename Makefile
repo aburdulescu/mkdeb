@@ -1,18 +1,25 @@
 ifeq ($(MKDEB_VERSION),)
-	DEB_DIR = mkdeb_dev
+	VERSION = dev
 else
-	DEB_DIR = mkdeb_$(MKDEB_VERSION)-0_$(shell dpkg --print-architecture)
+	VERSION = $(MKDEB_VERSION)-0
 endif
 
+ifeq ($(MKDEB_ARCH),)
+	ARCH = $(shell dpkg --print-architecture)
+else
+	ARCH = $(MKDEB_ARCH)
+endif
+
+DEB_DIR = mkdeb_$(VERSION)_$(ARCH)
 DEB_NAME = $(DEB_DIR).deb
 
 all:
-	go build -ldflags "-s -w -X main.version="$(MKDEB_VERSION)
+	go build -ldflags "-s -w -X main.version=$(MKDEB_VERSION)"
 
 clean:
 	go clean
 	rm -rf $(DEB_DIR) $(DEB_NAME)
 
 deb: all
-	./mkdeb $(DEB_DIR)
+	mkdeb $(DEB_DIR)
 	dpkg-deb -b $(DEB_DIR)
