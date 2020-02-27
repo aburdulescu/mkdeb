@@ -10,6 +10,12 @@ else
 	ARCH = $(MKDEB_ARCH)
 endif
 
+ifeq ($(MKDEB_USE_DEV_BINARY),)
+	MKDEB_BINARY = mkdeb
+else
+	MKDEB_BINARY = ./mkdeb
+endif
+
 DEB_DIR = mkdeb_$(VERSION)_$(ARCH)
 DEB_NAME = $(DEB_DIR).deb
 
@@ -21,5 +27,5 @@ clean:
 	rm -rf $(DEB_DIR) $(DEB_NAME)
 
 deb: all
-	mkdeb $(DEB_DIR)
+	$(MKDEB_BINARY) $(DEB_DIR)
 	dpkg-deb -b $(DEB_DIR)
