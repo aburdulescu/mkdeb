@@ -11,5 +11,5 @@ Example:
 - go to [releases](https://github.com/aburdulescu/mkdeb/releases) and download the latest package for your CPU architecture;
 - install the package: `sudo dpkg -i path/to/downloaded/package`
 ### Usage
-1. Write a `mkdeb.json` file following the deb format and the format exemplified in the `mkdeb.json` from this repo.
+1. Write a `mkdeb.yaml` file following the deb format and the format exemplified in the `mkdeb.yaml` from this repo.
 2. Run `mkdeb -h` for help message.

@@ -1,11 +1,12 @@
 package main
 
 import (
-	"encoding/json"
 	"errors"
 	"flag"
 	"fmt"
 	"os"
+
+	"gopkg.in/yaml.v2"
 )
 
 var version string
@@ -17,7 +18,7 @@ func handleError(err error) {
 
 func main() {
 	var metadataFile string
-	flag.StringVar(&metadataFile, "f", "mkdeb.json", "path to mkdeb.json file")
+	flag.StringVar(&metadataFile, "f", "mkdeb.yaml", "path to mkdeb.yaml file")
 	var printVersion bool
 	flag.BoolVar(&printVersion, "v", false, "print version")
 	flag.Parse()
@@ -35,7 +36,7 @@ func main() {
 		handleError(err)
 	}
 	var p Package
-	if err := json.NewDecoder(f).Decode(&p); err != nil {
+	if err := yaml.NewDecoder(f).Decode(&p); err != nil {
 		handleError(err)
 	}
 	if err := p.Validate(); err != nil {

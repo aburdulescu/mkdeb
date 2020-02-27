@@ -1,0 +1,12 @@
+control:
+  package: mkdeb
+  version: 0.1-0
+  architecture: all
+  maintainer: Andrei Burdulescu <andrei.burdulescu@pm.me>
+  description: cli tool for generating deb package metadata
+
+scripts:
+  postinst: ldconfig
+
+artifacts:
+  mkdeb: /usr/local/bin/mkdeb

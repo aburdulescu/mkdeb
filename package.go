@@ -3,9 +3,9 @@ package main
 import "errors"
 
 type Package struct {
-	Control   map[string]string `json:"control"`
-	Scripts   map[string]string `json:"scripts,omitempty"`
-	Artifacts map[string]string `json:"artifacts"`
+	Control   map[string]string `yaml:"control"`
+	Scripts   map[string]string `yaml:"scripts,omitempty"`
+	Artifacts map[string]string `yaml:"artifacts"`
 }
 
 func (p Package) Validate() error {
