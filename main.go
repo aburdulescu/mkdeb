@@ -35,14 +35,14 @@ func main() {
 	if err != nil {
 		handleError(err)
 	}
-	var p Package
-	if err := yaml.NewDecoder(f).Decode(&p); err != nil {
+	var m Metadata
+	if err := yaml.NewDecoder(f).Decode(&m); err != nil {
 		handleError(err)
 	}
-	if err := p.Validate(); err != nil {
+	if err := m.Validate(); err != nil {
 		handleError(err)
 	}
-	if err := makeOutDir(outputDir, p); err != nil {
+	if err := m.Generate(outputDir); err != nil {
 		handleError(err)
 	}
 }

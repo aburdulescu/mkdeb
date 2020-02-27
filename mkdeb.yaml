@@ -8,5 +8,5 @@ control:
 scripts:
   postinst: ldconfig
 
-artifacts:
+data:
   mkdeb: /usr/local/bin/mkdeb
