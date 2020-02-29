@@ -6,7 +6,9 @@ control:
   description: cli tool for generating deb package metadata
 
 scripts:
-  postinst: ldconfig
+  postinst: |
+    #!/bin/bash
+    ldconfig
 
 data:
   mkdeb: /usr/local/bin/mkdeb

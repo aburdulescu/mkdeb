@@ -130,7 +130,7 @@ func (m Metadata) generateScripts(dirname string) error {
 		if err != nil {
 			return err
 		}
-		_, err = f.WriteString("#!/bin/bash\n" + content + "\n")
+		_, err = f.WriteString(content)
 		if err != nil {
 			return err
 		}
