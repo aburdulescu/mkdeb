@@ -9,7 +9,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-var version string
+const version = "0.1"
 
 func handleError(err error) {
 	fmt.Fprintln(os.Stderr, "error:", err)
