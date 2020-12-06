@@ -8,8 +8,12 @@ Example:
 - generate deb package from metadata dir: `dpkg-deb -b my_awesome_package-3.4.5`
 
 ### Install
-- go to [releases](https://github.com/aburdulescu/mkdeb/releases) and download the latest package for your CPU architecture;
-- install the package: `sudo dpkg -i path/to/downloaded/package`
+- install golang(e.g. on Debian based distros: `sudo apt install golang`)
+- then run:
+```
+go get github.com/aburdulescu/mkdeb
+```
+
 ### Usage
 1. Write a `mkdeb.yaml` file following the deb format and the format exemplified in the `mkdeb.yaml` from this repo.
 2. Run `mkdeb -h` for help message.
