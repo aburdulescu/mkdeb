@@ -68,13 +68,23 @@ func (m Metadata) validateData() error {
 }
 
 func (m Metadata) Generate(dirname string) error {
-	if err := m.generateControl(dirname); err != nil {
+	var err error
+	defer func() {
+		if err == nil {
+			return
+		}
+		os.RemoveAll(dirname)
+	}()
+	err = m.generateControl(dirname)
+	if err != nil {
 		return err
 	}
-	if err := m.generateData(dirname); err != nil {
+	err = m.generateData(dirname)
+	if err != nil {
 		return err
 	}
-	if err := m.generateScripts(dirname); err != nil {
+	err = m.generateScripts(dirname)
+	if err != nil {
 		return err
 	}
 	return nil
