@@ -8,10 +8,10 @@ Example:
 - generate deb package from metadata dir: `dpkg-deb -b my_awesome_package-3.4.5`
 
 ### Install
-- install golang(e.g. on Debian based distros: `sudo apt install golang`)
+- install golang
 - then run:
 ```
-go get github.com/aburdulescu/mkdeb
+go install bandr.me/mkdeb@latest
 ```
 
 ### Usage
