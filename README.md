@@ -11,7 +11,7 @@ Example:
 - install golang
 - then run:
 ```
-go install bandr.me/mkdeb@latest
+go install bandr.me/p/mkdeb@latest
 ```
 
 ### Usage
